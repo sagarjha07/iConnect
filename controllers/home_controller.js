@@ -1,3 +1,5 @@
 module.exports.home=function(req,res){
-    return res.send("<h1>iConnect</h1>")
+    return res.render("home.ejs",{
+        title:"iConnect"
+    });
 }
