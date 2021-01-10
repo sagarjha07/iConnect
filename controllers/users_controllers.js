@@ -8,6 +8,10 @@ module.exports.profile=function(req,res){
 
 //rendering sign up
 module.exports.signUp=function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect("/users/profile");
+    }
+
     return res.render("user_sign_up",{
         title:"iConnect | Sign Up"
     });
@@ -15,6 +19,9 @@ module.exports.signUp=function(req,res){
 
 //rendering sign in
 module.exports.signIn=function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect("/users/profile");
+    }
     return res.render("user_sign_in",{
         title:"iConnect | Sign In"
     });
@@ -48,5 +55,10 @@ module.exports.create=function(req,res){
 
 //get the sign in data and create a seesion for the user
 module.exports.createSession=function(req,res){
-    
+    return res.redirect("/");
+};
+
+module.exports.destroySession=function(req,res){
+    req.logout();
+    return res.redirect("/");
 };
