@@ -4,7 +4,8 @@ const passport=require("passport");
 
 const usersContoller=require("../controllers/users_controllers");
 
-router.get("/profile",passport.checkAuthentication,usersContoller.profile);
+router.get("/profile/:id",passport.checkAuthentication,usersContoller.profile);
+router.post("/update/:id",passport.checkAuthentication,usersContoller.update);
 
 router.get("/sign-up",usersContoller.signUp);
 router.get("/sign-in",usersContoller.signIn);

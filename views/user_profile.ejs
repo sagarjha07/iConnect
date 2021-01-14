@@ -1,2 +1,15 @@
-<h1 style="margin: 0;">iConnect <%= user.name %>'s profile page</h1>
-<p>your email is : <%= user.email %></p>
+<h1 style="margin: 0;">iConnect / Profile Page</h1>
+
+
+    <% if(user.id==profile_user.id){%>
+        <!-- //if user mathches then show the form -->
+        <form action="/users/update/<%=profile_user.id%>" method="POST">
+            <input type="text" name="name" placeholder="Your Name" value="<%=profile_user.name%>" required>
+            <input type="email" name="email" placeholder="Your Email" value="<%=profile_user.email%>" required>
+            <input type="submit" value="Update">
+        </form>
+    <%}else{%>
+        <!-- //else only shiw profile info -->
+        <p><%= profile_user.name %>'s profile page%></p>
+        <p><%= profile_user.name %>'s email is : <%= profile_user.email %></p>
+    <%}%>
